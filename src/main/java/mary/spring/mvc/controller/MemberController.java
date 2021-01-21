@@ -51,5 +51,23 @@ public class MemberController {
         return mv;
     }
 
+    @GetMapping("/memberupd")
+    public ModelAndView memberupd(String userid) {
+        ModelAndView mv = new ModelAndView();
+
+        mv.setViewName("/memberupd");
+        mv.addObject("mvo", msrv04.readOneMember(userid));
+
+        return mv;
+    }
+
+    @PostMapping("/memberupdok")
+    public String memberupdok(MemberVO mvo) {
+
+        System.out.println(msrv04.modifyMember(mvo));
+
+        return "redirect:/memberlist";
+    }
+
 
 }
